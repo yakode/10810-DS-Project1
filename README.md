@@ -1,2 +1,2 @@
 # 10810-DS-Project1
-Data Structures by RST
+Project1 -- Tetris @Data Structures by RST
