@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdio>
 #include <fstream.h>
 #include <put_blocks.h>
 #include <check_line.h>
@@ -8,15 +7,16 @@
 using namespace std;
 
 int main(){
-	freopen("Tetris.data", "r", stdin);
+	ifstream inFile("Tetris.data");
+	if(!inFile) cout << "fail to open Tetris.data \n";
 	bool matrix[45+5][15] = {0};
 	int row, col;
-	cin >> row >> col;
+	inFile >> row >> col;
 	string block_type;
 	int start_col;
-	while(cin >> block_type){
+	while(inFile >> block_type){
 		if(block_type == "End") break;
-		cin >> start_col;
+		inFile >> start_col;
 		if(block_type == "T1")      put_t1(matrix, row, col, start_col);
 		else if(block_type == "T2") put_t2(matrix, row, col, start_col);
 		else if(block_type == "T3") put_t3(matrix, row, col, start_col);
@@ -39,13 +39,15 @@ int main(){
 
 		if(is_game_over) break;
 	}
-	freopen("Tetris.output", "w", stdout);
+	inFile.close();
+	fstream outFile;
+	outFile.open("Tetris.output", ios::out);
 	for(int i = 0; i < row; ++i){
 		for(int j = 0; j < col; ++j){
-			cout << matrix[i][j];
+			outFile << matrix[i][j];
 		}
-		cout << '\n';
+		outFile << '\n';
 	}
-	fclose(stdout);
+	outFile.close();
 	return 0;
 }
