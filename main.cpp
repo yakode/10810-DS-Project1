@@ -17,32 +17,32 @@ int main(){
 	while(inFile >> block_type){
 		if(block_type == "End") break;
 		inFile >> start_col;
-		if(block_type == "T1")      put_t1(matrix, row, col, start_col);
-		else if(block_type == "T2") put_t2(matrix, row, col, start_col);
-		else if(block_type == "T3") put_t3(matrix, row, col, start_col);
-		else if(block_type == "T4") put_t4(matrix, row, col, start_col);
-		else if(block_type == "L1") put_l1(matrix, row, col, start_col);
-		else if(block_type == "L2") put_l2(matrix, row, col, start_col);
-		else if(block_type == "L3") put_l3(matrix, row, col, start_col);
-		else if(block_type == "L4") put_l4(matrix, row, col, start_col);
-		else if(block_type == "J1") put_j1(matrix, row, col, start_col);
-		else if(block_type == "J2") put_j2(matrix, row, col, start_col);
-		else if(block_type == "J3") put_j3(matrix, row, col, start_col);
-		else if(block_type == "J4") put_j4(matrix, row, col, start_col);
-		else if(block_type == "S1") put_s1(matrix, row, col, start_col);
-		else if(block_type == "S2") put_s2(matrix, row, col, start_col);
-		else if(block_type == "Z1") put_z1(matrix, row, col, start_col);
-		else if(block_type == "Z2") put_z2(matrix, row, col, start_col);
-		else if(block_type == "I1") put_i1(matrix, row, col, start_col);
-		else if(block_type == "I2") put_i2(matrix, row, col, start_col);
-		else if(block_type == "O") put_o (matrix, row, col, start_col);
+		if(block_type == "T1")      put_blocks(matrix, row, col, start_col, 0 );
+		else if(block_type == "T2") put_blocks(matrix, row, col, start_col, 1 );
+		else if(block_type == "T3") put_blocks(matrix, row, col, start_col, 2 );
+		else if(block_type == "T4") put_blocks(matrix, row, col, start_col, 3 );
+		else if(block_type == "L1") put_blocks(matrix, row, col, start_col, 4 );
+		else if(block_type == "L2") put_blocks(matrix, row, col, start_col, 5 );
+		else if(block_type == "L3") put_blocks(matrix, row, col, start_col, 6 );
+		else if(block_type == "L4") put_blocks(matrix, row, col, start_col, 7 );
+		else if(block_type == "J1") put_blocks(matrix, row, col, start_col, 8 );
+		else if(block_type == "J2") put_blocks(matrix, row, col, start_col, 9 );
+		else if(block_type == "J3") put_blocks(matrix, row, col, start_col, 10);
+		else if(block_type == "J4") put_blocks(matrix, row, col, start_col, 11);
+		else if(block_type == "S1") put_blocks(matrix, row, col, start_col, 12);
+		else if(block_type == "S2") put_blocks(matrix, row, col, start_col, 13);
+		else if(block_type == "Z1") put_blocks(matrix, row, col, start_col, 14);
+		else if(block_type == "Z2") put_blocks(matrix, row, col, start_col, 15);
+		else if(block_type == "I1") put_blocks(matrix, row, col, start_col, 16);
+		else if(block_type == "I2") put_blocks(matrix, row, col, start_col, 17);
+		else if(block_type == "O")  put_blocks(matrix, row, col, start_col, 18);
 
-		if(is_game_over) break;
+		if(is_game_over(matrix, row, col)) break;
 	}
 	inFile.close();
 	fstream outFile;
 	outFile.open("Tetris.output", ios::out);
-	for(int i = 0; i < row; ++i){
+	for(int i = row-1; i >= 0; --i){
 		for(int j = 0; j < col; ++j){
 			outFile << matrix[i][j];
 		}
