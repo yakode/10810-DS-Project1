@@ -1,5 +1,5 @@
 #include <iostream>
-#include <fstream.h>
+#include <fstream>
 #include <put_blocks.h>
 #include <check_line.h>
 #include <is_game_over.h>
