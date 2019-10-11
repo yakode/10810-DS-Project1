@@ -36,6 +36,7 @@ int main(){
 		else if(block_type == "I1") put_blocks(matrix, row, col, start_col, 16);
 		else if(block_type == "I2") put_blocks(matrix, row, col, start_col, 17);
 		else if(block_type == "O")  put_blocks(matrix, row, col, start_col, 18);
+		else break;
 
 		if(is_game_over(matrix, row, col)) break;
 	}
