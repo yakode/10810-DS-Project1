@@ -43,7 +43,7 @@ int main(){
 	}
 	inFile.close();
 	fstream outFile;
-	outFile.open("Tetris.output", ios::out);
+	outFile.open("Tetris.final", ios::out);
 	for(int i = row-1; i >= 0; --i){
 		for(int j = 0; j < col; ++j){
 			outFile << matrix[i][j];
